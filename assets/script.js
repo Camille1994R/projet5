@@ -17,8 +17,6 @@ const slides = [
 	}
 ]
 
-const slidesImages = ["slide1.jpg", "slide2.jpg", "slide3.jpg", "slide4.jpg" ]
-
 let currentSlide = 0;
 
 let arrow_right = document.querySelector(".arrow_right")
@@ -41,18 +39,43 @@ console.log(NombrePoints)
 
 
 function changeSlide (sens) {
+
+	let oldSlide = currentSlide
+
 	currentSlide = currentSlide + sens;
-	if (currentSlide > 3)
+	if (currentSlide > 3) {
 		currentSlide = 0
-	if (currentSlide < 0)
+	}
+	if (currentSlide < 0) {
 		currentSlide = 3
-	document.getElementById("mainBanner").src= "./assets/images/slideshow/" + slidesImages[currentSlide];
+	}
+	document.getElementById("mainBanner").src= "./assets/images/slideshow/" + slides[currentSlide].image;
+	document.getElementById("tagLine").innerHTML = slides[currentSlide].tagLine
+	console.log(slides[currentSlide])
+	applyNewClass(true, currentSlide)
+	applyNewClass(false, oldSlide)
 
 }
 
-let contenuP1 = "Tirages haute définition grand format <span>pour vos bureaux et events</span>";
-let contenuP2 = "Grand choix de couleurs <span>de CMJN aux pantones</span>";
-let contenuP3 = "Autocollants <span>avec découpe laser sur mesure</span>"
-
-let p = document.querySelector(".tagLine")
+function applyNewClass(shouldAdd, slide) {
+	let doc
+	if (slide === 0) {
+	  doc = document.getElementById("image0")
+	} else if (slide === 1) {
+	  doc = document.getElementById("image1")
+	} else if (slide === 2) {
+	  doc = document.getElementById("image2")
+	} else {
+	  doc = document.getElementById("image3")
+	}
+	
+	if (shouldAdd) {
+	  doc.classList.add("dot_selected")
+	} else {
+	  doc.classList.remove("dot_selected")
+	}
+  }
+//for (let i = 0; i <= 3; i++ ) {
+//	document.getElementById("image0")
+//}
 
