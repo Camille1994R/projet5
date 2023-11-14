@@ -21,14 +21,25 @@ let currentSlide = 0;
 
 let arrow_right = document.querySelector(".arrow_right")
 arrow_right.addEventListener("click",function () {
+	changeSlide(1)
 	console.log("vous avez cliqué sur le bouton")
 	//alert("Salut à droite!")
 });
 let arrow_left = document.querySelector(".arrow_left")
 arrow_left.addEventListener("click",function () {
+	changeSlide(-1)
 	console.log("vous avez cliqué sur le bouton")
 	//alert("Salut (à gauche)!")
 });
+
+let div = `
+		<div class="dot_selected dot" id="image0"></div>
+		<div class="dot" id="image1"></div>
+		<div class="dot" id="image2"></div>
+		<div class="dot" id="image3"></div>
+`
+let dots = document.querySelector(".dots")
+dots.innerHTML = div
 
 const NombrePoints = slides.length
 console.log(NombrePoints)
@@ -78,4 +89,8 @@ function applyNewClass(shouldAdd, slide) {
 //for (let i = 0; i <= 3; i++ ) {
 //	document.getElementById("image0")
 //}
+
+// faire les dots en innerHTML
+
+//
 
